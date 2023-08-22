@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--lenguaje en ingles -->
+<html xmlns:th="http://www.thymeleaf.org" ><!--importando la funcionalidad de thymeleaf, es como una libreria th -->
+	<!-- en head se configura la metadata(datos que no ve el usuario) -->
+<head>
+	
+    <meta charset="UTF-8">
+    <!--para decir que es una pagina web responsiva -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--titulo a nivel de pestaña -->
+    <title>Document</title>
+</head>
+<!--lo que va a contener mi pagina web visualmente -->
+<body>
+     <h1>hola Mundo</h1>
+     <table>
+		 <thead>
+			 <tr> <!--lrepresentar una fila -->
+				 <th> ID</th>
+				 <th> Nombre</th>
+				 <th>Apellido</th>
+				 <th> Cedula</th>
+				 <th>Editar</th>
+			 </tr>
+		 </thead>
+		 <hbody>
+			 <tr th:each="propietario:${propietarios}">
+				 <td th:text="${propietario.id}"></td>
+				 <td th:text="${propietario.nombre}"></td>
+				 <td th:text="${propietario.apellido}"></td>
+				 <td th:text="${propietario.cedula}"></td>
+				 <td>
+					<form th:action="@{propietarios/buscarPorId/{id}(id=${propietario.id})}" th:method="GET">
+						<input type="sub1mit" value="Editar">
+					</form>	
+				 </td>
+				 <td>
+					<form th:action="@{propietarios/borrar/{id}(id=${propietario.id})}" th:method="DELETE">
+						<input type="sub1mit" value="Borrar">
+					</form>	
+				 </td>
+			 </tr>
+		 </hbody>
+		 
+	 </table>
+</body>
+</html>
